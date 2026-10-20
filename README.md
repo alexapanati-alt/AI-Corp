@@ -38,6 +38,7 @@ flowchart TD
 ```
 AI-Corp/
 ├── README.md                 architecture (this file)
+├── GUIDE.md                  concepts, rules of thumb, lessons from the run
 ├── .claude/agents/           reusable agent definitions
 │   ├── researcher.md         general researcher; its scope is given in the task
 │   └── aic-verifier.md       AIC specialist fact-checker
