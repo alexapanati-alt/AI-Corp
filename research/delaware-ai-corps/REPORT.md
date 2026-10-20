@@ -24,13 +24,27 @@ Wyoming (2021) expressly allows "algorithmically managed" DAO LLCs. Utah's DAO A
 
 ## The proposed AIC
 
-> **Status: being verified by Node V.** See `state/node_v_aic_verification.md`.
+> **Status: draft bill only, not law.** Node V verified this section (`state/node_v_aic_verification.md`). Node V could read only search-engine excerpts of the 36-page draft (dated 06/02/2026), not the full text.
 
-Claims as reported by Node A:
-- Unveiled in mid-2026 by the Secretary of State with Norm Ai.
-- An AI agent manages the company day to day.
-- It needs one human or corporate member, who keeps limited liability only if the company has enough capital, logs the agent's activity and discloses that it is a test entity.
-- It runs in a 30-month sandbox, and a committee including the Secretary of State and the Attorney General approves entry.
-- The Court of Chancery can dissolve one, and banking is excluded.
-- It's expected in the legislature in January 2027.
-- It builds on HJR 7 (July 2025), the agentic-AI sandbox resolution.
+**What it is:** a new entity whose day-to-day operations are run by an AI agent. It would sit in a new **Title 6, Ch. 81** (Artificial Intelligence Company Act), alongside a new **Ch. 80** (Regulatory Sandbox Act). It is neither part of the DGCL nor an amendment to the LLC Act.
+
+**Who made it:**
+- The Delaware AI Commission's **Regulatory Sandbox Subcommittee** drafted it. Node A's notes had pointed to the Corporation Law Council, and Node V corrected that.
+- The principal drafter is John Mark Zeberkiewicz of Richards Layton & Finger.
+- Secretary of State **Charuni Patibanda-Sanchez** and Norm Ai, the "development partner", launched it publicly on July 13–14, 2026. Spotlight Delaware first reported the draft on June 30.
+
+**How it works:**
+- **Member:** one person or entity, who must keep the AIC adequately capitalized. The member's liability shield gives way for **underfunding, fraud or willful violation of law**, and applies only inside the sandbox. Node A had described logging and counterparty disclosure as conditions of the shield; they are actually duties of the AIC itself.
+- **AIC duties:** keep an activity log of the agent, and tell counterparties that it is a test entity, that the State does not endorse it, when the test ends and how to complain.
+- **Gatekeeper:** a four-member committee decides who gets in: the Secretary of State, the Attorney General, the Chief Justice of the Delaware Supreme Court and the chair of the AI Commission. The Secretary of State administers the sandbox.
+- **Sandbox length:** 30 months, though sources differ on whether that is the program's lifespan or the application window.
+- **Kill switch:** applicants must show they can promptly stop unauthorized agent activity and can terminate the agent.
+- **Enforcement:** the committee can suspend or revoke an AIC, or petition the Court of Chancery to dissolve it. Banking is excluded.
+
+**Status and timing:** there is no bill number. The draft was styled for the 153rd General Assembly, which adjourned June 30, 2026, so it must be introduced again in the 154th, expected in January 2027. It grows out of **HJR 7** (signed July 23, 2025).
+
+**Open criticism:**
+- "Adequately capitalized" is not defined (Petrin).
+- It's unclear who is accountable for what the agent does.
+- Other states might not honor the liability shield.
+- Norm Ai has a commercial conflict of interest.
