@@ -30,7 +30,7 @@ You don't do broad research. You check claims handed to you.
 - Dates, and the exact names and titles of officials.
 
 ## Output
-Write markdown to the state file named in your task (e.g. `state/node_v_aic_verification.md`):
+Write markdown to the notes file named in your task (e.g. `v-aic-verification.md`):
 1. A table: claim | verdict | source URL(s).
 2. A short notes section, including important facts the claims missed.
 

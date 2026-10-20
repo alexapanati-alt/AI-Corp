@@ -3,80 +3,61 @@
 Multi-agent research on how Delaware treats AI-run corporations, built as a **graph** of Claude Code agents:
 
 - **Nodes** are agents.
-- **State** is a set of files the agents share.
+- **State** is a set of notes files, one per agent.
 - **Edges** control the order agents run in.
 
 ## Architecture
 
 ```mermaid
 flowchart TD
-    Q([Question: Delaware's approach to AI corporations])
+    Q([Question])
 
-    subgraph R[Research nodes — run in parallel]
-        A[Node A<br/>statutes-researcher<br/><i>DGCL §141, §142, SB 21</i>]
-        B[Node B<br/>llc-researcher<br/><i>LLC Act, DAO laws</i>]
-        C[Node C<br/>courts-researcher<br/><i>Caremark, PBCs</i>]
+    subgraph R[Research — parallel, one shared agent definition]
+        A[A · researcher<br/><i>statutes</i>]
+        B[B · researcher<br/><i>LLCs & DAOs</i>]
+        C[C · researcher<br/><i>courts & PBCs</i>]
     end
 
-    subgraph S[State — research/delaware-ai-corps/state/]
-        SA[(node_a_statutes.md)]
-        SB[(node_b_llc.md)]
-        SC[(node_c_courts.md)]
-        SV[(node_v_aic_verification.md)]
-    end
-
-    G{Gate: any claims<br/>flagged unverified?}
-    V[Node V<br/>aic-verifier<br/><i>AIC specialist fact-checker</i>]
-    D[Node D — Synthesizer<br/><i>main session / orchestrator</i>]
-    OUT([REPORT.md])
+    G{Gate: notes flagged<br/>Not verified?}
+    V[V · aic-verifier<br/><i>specialist fact-check</i>]
+    D[D · orchestrator<br/><i>synthesize</i>]
+    OUT([report.md])
 
     Q -->|fan-out| A & B & C
-    A -->|writes| SA
-    B -->|writes| SB
-    C -->|writes| SC
-    SA & SB & SC -->|fan-in| G
-    G -->|yes: AIC claims| V
-    SA -.->|reads claims| V
-    V -->|writes| SV
+    A -->|a-statutes.md| G
+    B -->|b-llc.md| G
+    C -->|c-courts.md| G
+    G -->|yes| V
     G -->|no| D
-    SV --> D
+    V -->|v-aic-verification.md| D
     D --> OUT
 ```
 
-| Edge type | Where | Meaning |
-|---|---|---|
-| **Fan-out** | Question → A, B, C | These three don't depend on each other, so they start in the same step |
-| **Fan-in** | A, B, C → Gate | Nothing past this point runs until all three have finished |
-| **Conditional** | Gate → V | The verifier runs only if research nodes flagged claims as unverified |
-| **Sequential** | V → D → Report | The final write-up waits for verification |
-
-## Repository layout
+## Layout
 
 ```
 AI-Corp/
-├── README.md                     ← this file (architecture diagram)
-├── .claude/agents/               ← NODE DEFINITIONS (reusable agents)
-│   ├── statutes-researcher.md    Node A
-│   ├── llc-researcher.md         Node B
-│   ├── courts-researcher.md      Node C
-│   └── aic-verifier.md           Node V (specialist)
-└── research/
-    └── delaware-ai-corps/        ← ONE RUN of the graph
-        ├── GRAPH.md              ← edges + run log for this run
-        ├── state/                ← STATE (one file per node, no shared writes)
-        │   ├── node_a_statutes.md
-        │   ├── node_b_llc.md
-        │   ├── node_c_courts.md
-        │   └── node_v_aic_verification.md
-        └── REPORT.md             ← synthesizer output
+├── README.md                 architecture (this file)
+├── .claude/agents/           reusable agent definitions
+│   ├── researcher.md         general researcher; its scope is given in the task
+│   └── aic-verifier.md       AIC specialist fact-checker
+└── delaware-ai-corps/        one run = one folder
+    ├── graph.md              ← start here: each node's scope, the edges, the run log
+    ├── a-statutes.md  ┐
+    ├── b-llc.md       │ notes: each node writes only its own file
+    ├── c-courts.md    │
+    ├── v-aic-verification.md ┘
+    └── report.md             final synthesis
 ```
 
-- **`.claude/agents/`**: Claude Code loads each file in this folder as a named subagent type. The frontmatter sets the agent's name, its description (which tells the orchestrator when to use it) and its allowed tools. The body is that agent's system prompt. These files are reusable across runs.
-- **`research/<topic>/`**: one folder per question. The same agents can be pointed at a new topic, which gets a new folder.
-- **Synthesizer (Node D)**: this is the orchestrating session itself, not a separate agent file. It holds the edges, waits on fan-in, resolves conflicts between nodes and writes `REPORT.md`.
+## Design choices
 
-## Running it
+- **One researcher definition, many scopes.** The research nodes share the same rules (sourcing, separating verified from uncertain, output format), so those rules live in a single file, `researcher.md`. Each node's scope is one row in the run's `graph.md`. A change to the rules applies to every node, and adding a node means adding a row instead of writing a new agent file.
+- **Specialists get their own file.** `aic-verifier` uses a different method (a ranking of source types, fixed verdict labels, standing questions), so it has its own definition.
+- **Notes live alongside the report.** Each run is a single flat folder, with no separate `state/` subfolder. The letter prefix on each notes file matches its node ID in `graph.md`.
+- **The orchestrator is the main Claude Code session,** not an agent file. It reads `graph.md`, starts the nodes, waits for them to finish and writes `report.md`.
 
-In Claude Code, from this repo:
+## Running a new topic
 
-> Run the graph in `research/delaware-ai-corps/GRAPH.md`: spawn statutes-researcher, llc-researcher and courts-researcher in parallel, then aic-verifier on any flagged AIC claims, then synthesize REPORT.md.
+1. Copy `delaware-ai-corps/graph.md` into a new folder and rewrite each node's scope.
+2. In Claude Code, ask: *"Run the graph in `<folder>/graph.md`."*

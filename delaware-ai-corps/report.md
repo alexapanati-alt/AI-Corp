@@ -1,6 +1,6 @@
 # Delaware's approach to AI corporations
 
-*Synthesized from `state/` (Nodes A, B, C and V). This is research notes, not legal advice. Statutory wording mostly comes from secondary sources.*
+*Synthesized from the node notes in this folder (`a-`, `b-`, `c-` and `v-*.md`). This is research notes, not legal advice. Statutory wording mostly comes from secondary sources.*
 
 ## Bottom line
 
@@ -24,7 +24,7 @@ Wyoming (2021) expressly allows "algorithmically managed" DAO LLCs. Utah's DAO A
 
 ## The proposed AIC
 
-> **Status: draft bill only, not law.** Node V verified this section (`state/node_v_aic_verification.md`). Node V could read only search-engine excerpts of the 36-page draft (dated 06/02/2026), not the full text.
+> **Status: draft bill only, not law.** Node V verified this section (`v-aic-verification.md`). Node V could read only search-engine excerpts of the 36-page draft (dated 06/02/2026), not the full text.
 
 **What it is:** a new entity whose day-to-day operations are run by an AI agent. It would sit in a new **Title 6, Ch. 81** (Artificial Intelligence Company Act), alongside a new **Ch. 80** (Regulatory Sandbox Act). It is neither part of the DGCL nor an amendment to the LLC Act.
 
