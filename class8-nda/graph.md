@@ -77,4 +77,5 @@ Material corrections or revisions by me: <summary of the correction log, with a 
 
 | Date | Step | Result |
 |---|---|---|
-| — | — | Not yet run. |
+| 2026-10-25 | G (inputs) | Present: deal description, Pubco draft NDA (6.1.25), Target markup, Litera comparison. **Missing:** Starbucks/Lipton Diligence Considerations. **Precedent problem:** the file supplied (`hot-shot-nda.pdf`) is a Hot Shot Legal practice summary built around a mutual commercial-contract confidentiality clause, not a pro-buyer M&A NDA from Westlaw or Lexis; Ex 2 needs the latter. `ma-term-sheets-summary.pdf` is background reading and isn't used. Early flags for Ex 4: the Pubco draft calls Target Parent "a California" with no entity type, makes Target Parent and the Company California corporations, and is "effective as of September 1, 2025" although dated 6.1.25; the deal description says Target Owner is CVC Capital Partners, a UK private equity fund. Independent redline built (`ex4-independent-redline.html`, not committed). |
+| 2026-10-25 | H1 (tools) | Blocked: no browser connection in this session, so Harvey/Gemini can't be driven from here. |
