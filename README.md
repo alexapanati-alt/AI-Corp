@@ -41,7 +41,10 @@ AI-Corp/
 ├── GUIDE.md                  concepts, rules of thumb, lessons from the run
 ├── .claude/agents/           reusable agent definitions
 │   ├── researcher.md         general researcher; its scope is given in the task
-│   └── aic-verifier.md       AIC specialist fact-checker
+│   ├── aic-verifier.md       AIC specialist fact-checker
+│   └── nda-reviewer.md       NDA specialist reviewer (class8-nda run)
+├── tools/redline.py          word-level redline of two .docx/.pdf/.md files
+├── class8-nda/               NDA assignment run (see its graph.md)
 └── delaware-ai-corps/        one run = one folder
     ├── graph.md              ← start here: each node's scope, the edges, the run log
     ├── a-statutes.md  ┐
@@ -62,3 +65,7 @@ AI-Corp/
 
 1. Copy `delaware-ai-corps/graph.md` into a new folder and rewrite each node's scope.
 2. In Claude Code, ask: *"Run the graph in `<folder>/graph.md`."*
+
+## Other runs
+
+- [`class8-nda/`](class8-nda/graph.md): the NYU Law Class 8 Follow-Up assignment (a Starbucks/Lipton NDA). Each exercise is run in Harvey or Legora and Gemini; `nda-reviewer` nodes then check each tool's output in parallel, and the orchestrator drafts the evaluations and cover sheets. Ask: *"Run Exercise 1 in `class8-nda/graph.md`."*
